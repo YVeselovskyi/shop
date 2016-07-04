@@ -4,7 +4,8 @@
   "description": "Online shop with NodeJS and MongoDB",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
   },
   "devDependencies": {},
   "scripts": {
