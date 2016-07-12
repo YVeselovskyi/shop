@@ -18,6 +18,7 @@ mongoose.connect('mongodb://root:abc123@ds011725.mlab.com:11725/shop' , err => {
 })
 
 //Middleware
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,7 +26,11 @@ app.engine('ejs' , ejsMate);
 app.set('view engine', 'ejs');
 
 app.get('/' , (req, res) => {
-  res.render('home');
+  res.render('main/home');
+})
+
+app.get('/about' , (req, res) => {
+  res.render('main/about');
 })
 
 
