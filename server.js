@@ -17,6 +17,9 @@ mongoose.connect('mongodb://root:abc123@ds011725.mlab.com:11725/shop' , err => {
   }
 })
 
+const mainRoutes = require('./routes/main');
+const userRoutes = require('./routes/user');
+
 //Middleware
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -24,28 +27,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.engine('ejs' , ejsMate);
 app.set('view engine', 'ejs');
-
-app.get('/' , (req, res) => {
-  res.render('main/home');
-})
-
-app.get('/about' , (req, res) => {
-  res.render('main/about');
-})
-
-
-app.post('/create-user' , (req, res, next) =>{
-  let user = new User();
-
-  user.profile.name = req.body.name;
-  user.password = req.body.password;
-  user.email = req.body.email;
-
-  user.save((err) => {
-     if (err) return next(err);
-     res.json('Successfully creater a new user!')
-  });
-})
+app.use(mainRoutes);
+app.use(userRoutes);
 
 app.listen(3000, err => {
   if(err) throw err;
