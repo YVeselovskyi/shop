@@ -6,7 +6,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const ejsMate = require('ejs-mate');
-
+const session = require('session');
+const cookieParser = require('cookie-parser');
+const flash = require('express-flash');
 const User = require('./models/user');
 
 mongoose.connect('mongodb://root:abc123@ds011725.mlab.com:11725/shop' , err => {
