@@ -1,0 +1,24 @@
+<%layout('layout') %>
+    <div class="row center">
+        <h3>Login</h3>
+        <% if(message.length > 0) { %>
+        	<div class="alert-danger">
+        		<%= message %>
+        	</div>
+        <% } %>
+        <form method="post" class="col s12">
+            <div class="row signup-form">
+                <div class="input-field col s12">
+                    <input name="email" id="email" type="text" class="validate">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="input-field col s12">
+                    <input name="password" id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+
+        </form>
+    </div>
